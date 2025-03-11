@@ -30,6 +30,10 @@ else
   echo "Writing SHARED_DIRECTORY to /etc/exports file"
   echo "{{SHARED_DIRECTORY}} {{PERMITTED}}({{READ_ONLY}},fsid=0,{{SYNC}},no_subtree_check,no_auth_nlm,insecure,no_root_squash)" >> /etc/exports
   /bin/sed -i "s@{{SHARED_DIRECTORY}}@${SHARED_DIRECTORY}@g" /etc/exports
+  echo "Setting permissions on SHARED_DIRECTORY"
+  /bin/chown -R nobody:nogroup ${SHARED_DIRECTORY}
+  /bin/chmod 777 -R ${SHARED_DIRECTORY}
+  /bin/chmod 777 -R "${SHARED_DIRECTORY}/*"
 fi
 
 # This is here to demonsrate how multiple directories can be shared. You
@@ -42,6 +46,10 @@ if [ ! -z "${SHARED_DIRECTORY_2}" ]; then
   echo "Writing SHARED_DIRECTORY_2 to /etc/exports file"
   echo "{{SHARED_DIRECTORY_2}} {{PERMITTED}}({{READ_ONLY}},{{SYNC}},no_subtree_check,no_auth_nlm,insecure,no_root_squash)" >> /etc/exports
   /bin/sed -i "s@{{SHARED_DIRECTORY_2}}@${SHARED_DIRECTORY_2}@g" /etc/exports
+  echo "Setting permissions on SHARED_DIRECTORY_2"
+  /bin/chown -R nobody:nogroup ${SHARED_DIRECTORY_2}
+  /bin/chmod 777 -R ${SHARED_DIRECTORY_2}
+  /bin/chmod 777 -R "${SHARED_DIRECTORY_2}/*"
 fi
 
 # Check if the PERMITTED variable is empty
