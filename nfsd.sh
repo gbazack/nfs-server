@@ -33,7 +33,6 @@ else
   echo "Setting permissions on SHARED_DIRECTORY"
   /bin/chown -R nobody:nogroup ${SHARED_DIRECTORY}
   /bin/chmod 777 -R ${SHARED_DIRECTORY}
-  /bin/chmod 777 -R "${SHARED_DIRECTORY}/*"
 fi
 
 # This is here to demonsrate how multiple directories can be shared. You
@@ -49,7 +48,6 @@ if [ ! -z "${SHARED_DIRECTORY_2}" ]; then
   echo "Setting permissions on SHARED_DIRECTORY_2"
   /bin/chown -R nobody:nogroup ${SHARED_DIRECTORY_2}
   /bin/chmod 777 -R ${SHARED_DIRECTORY_2}
-  /bin/chmod 777 -R "${SHARED_DIRECTORY_2}/*"
 fi
 
 # Check if the PERMITTED variable is empty
